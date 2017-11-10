@@ -7,16 +7,34 @@ public class Assento {
 	boolean status;
 	
 
-	void marcarAssento() {
+	public void marcarAssento() {
 			
 	}
-	void desmarcarAssento() {
+	public void desmarcarAssento() {
 		
 	}
-	void remarcarAssento() {
+	public void remarcarAssento() {
 		
 	}
-	void assentoMarcado() {
+	public void assentoMarcado() {
+		
+	}
+	public void assentosMarcados() {
+		
+	}
+	public void assentosDisponiveis() {
+		
+	}
+	public void assentoPrimeiraClasse() {
+		
+	}
+	public void assentoClasseNormal() {
+		
+	}
+	public void exibirAssentos() {
+		
+	}
+	public void valorTotal() {
 		
 	}
 
