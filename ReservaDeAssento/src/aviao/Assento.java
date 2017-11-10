@@ -9,7 +9,7 @@ public class Assento {
 
 	public void marcarAssento() {
 		status = true;
-		if(coluna>3){
+		if(fileira < 3){
 			valor = 100;
 		}else{
 			valor = 80;
@@ -43,4 +43,4 @@ public class Assento {
 		
 	}
 
-}
+} 
