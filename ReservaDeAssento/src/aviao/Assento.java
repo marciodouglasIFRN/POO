@@ -8,11 +8,17 @@ public class Assento {
 	
 
 	public void marcarAssento() {
-		status = true;
-		if(fileira < 3){
-			valor = 100;
+
+		if(!status){
+			status = true;
+			if(fileira < 3){
+				valor = 100;
+			}else{
+				valor = 80;
+			}
+
 		}else{
-			valor = 80;
+			System.out.println("Assento ocupado");
 		}
 	}
 	public void desmarcarAssento() {
