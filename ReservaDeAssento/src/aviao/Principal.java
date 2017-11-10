@@ -1,16 +1,18 @@
 package aviao;
 
-public class Principal {
-<<<<<<< HEAD:ReservaDeAssento/src/aviao/Principal.java
+import java.util.Scanner;
 
-	
-=======
+public class Principal {
+
 	public static void main(){
 		
 	}
 	public String tratarEntrada(){
-		String str="";
+		Scanner leitor = new Scanner(System.in);
+		String str = leitor.nextLine();
+		str = str.replace(" ", "");
+		str = str.toUpperCase();
 		return str;
 	}
->>>>>>> 97368805f70e1523126c30e24d2db30bdbdbef3d:ReservaDeAssento/src/Principal.java
+
 }
