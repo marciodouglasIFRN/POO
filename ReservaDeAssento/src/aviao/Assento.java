@@ -7,7 +7,7 @@ public class Assento {
 	boolean status;
 	
 
-	public void marcarAssento() {
+	public void marcarAssento(int coluna, int fileira) {
 
 		if(!status){
 			status = true;
@@ -21,32 +21,47 @@ public class Assento {
 			System.out.println("Assento ocupado");
 		}
 	}
-	public void desmarcarAssento() {
+	public void desmarcarAssento(int coluna, int fileira) {
+		
+		if(status){
+			status = false;
+				valor = 0;
+				System.out.println("Assento Liberado com Sucesso");
+		}else{
+			System.out.println("ATENÇÃO! O Assento Já Se Encontra Vazio");
+		}
 		
 	}
-	public void remarcarAssento() {
+	public void remarcarAssento(int coluna, int fileira) {
 		
+
 	}
-	public void assentoMarcado() {
+	public int assentoMarcado() {
 		
+		return 0;
 	}
-	public void assentosMarcados() {
+	public int assentosMarcados() {
 		
+		return 0;
 	}
-	public void assentosDisponiveis() {
+	public int assentosDisponiveis() {
 		
+		return 0;
 	}
-	public void assentoPrimeiraClasse() {
+	public int assentoPrimeiraClasse() {
 		
+		return 0;
 	}
-	public void assentoClasseNormal() {
+	public int assentoClasseNormal() {
 		
+		return 0;
 	}
 	public void exibirAssentos() {
 		
 	}
-	public void valorTotal() {
+	public boolean valorTotal() {
 		
+		return true;
 	}
 
 } 
