@@ -1,5 +1,7 @@
 package aviao;
 
+import java.util.Scanner;
+
 public class Assento {
 	int fileira;
 	int coluna;
@@ -11,6 +13,8 @@ public class Assento {
 
 		if(!status){
 			status = true;
+			this.coluna = coluna;
+			this.fileira = fileira;
 			if(fileira < 3){
 				valor = 100;
 			}else{
@@ -28,7 +32,7 @@ public class Assento {
 				valor = 0;
 				System.out.println("Assento Liberado com Sucesso");
 		}else{
-			System.out.println("ATENÇÃO! O Assento Já Se Encontra Vazio");
+			System.out.println("ATENÃ‡ÃƒO! O Assento JÃ¡ Se Encontra Vazio");
 		}
 		
 	}
@@ -62,6 +66,21 @@ public class Assento {
 	public boolean valorTotal() {
 		
 		return true;
+	}
+	public int retornaColuna(String entrada){
+		int coluna = entrada.charAt(0);
+		return coluna;
+	}
+	public int retornaFileira(String entrada){
+		int fileira = Integer.parseInt(entrada.substring(1));
+		return 0;
+	}
+	public String tratarEntrada(){
+		Scanner leitor = new Scanner(System.in);
+		String str = leitor.nextLine();
+		str = str.replace(" ", "");
+		str = str.toUpperCase();
+		return str;
 	}
 
 } 
