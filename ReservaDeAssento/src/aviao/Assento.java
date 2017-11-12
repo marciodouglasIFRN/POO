@@ -3,19 +3,41 @@ package aviao;
 import java.util.Scanner;
 
 public class Assento {
-	int fileira;
-	int coluna;
-	double valor;
-	boolean status;
+	private double valor;
+	private boolean status;
+	private int quantidade;
+	private String posicao;
 	
-
-	public void marcarAssento(int coluna, int fileira) {
-
+	public int getQuantidade() {
+		return quantidade;
+	}
+	public void setQuantidade(int quantidade) {
+		this.quantidade = quantidade;
+	}
+	public String getPosicao() {
+		return posicao;
+	}
+	public void setPosicao(String posicao) {
+		this.posicao = posicao;
+	}
+	public double getValor() {
+		return valor;
+	}
+	public void setValor(double valor) {
+		this.valor = valor;
+	}
+	public boolean isStatus() {
+		return status;
+	}
+	public void setStatus(boolean status) {
+		this.status = status;
+	}
+	
+	public void marcarAssento(String posicao) {
 		if(!status){
 			status = true;
-			this.coluna = coluna;
-			this.fileira = fileira;
-			if(fileira < 3){
+			this.posicao = posicao;
+			if(Principal.retornaFileira(posicao) < 3){
 				valor = 100;
 			}else{
 				valor = 80;
@@ -25,8 +47,7 @@ public class Assento {
 			System.out.println("Assento ocupado");
 		}
 	}
-	public void desmarcarAssento(int coluna, int fileira) {
-		
+	public void desmarcarAssento() {
 		if(status){
 			status = false;
 				valor = 0;
@@ -36,51 +57,7 @@ public class Assento {
 		}
 		
 	}
-	public void remarcarAssento(int coluna, int fileira) {
-		
 
-	}
-	public int assentoMarcado() {
-		
-		return 0;
-	}
-	public int assentosMarcados() {
-		
-		return 0;
-	}
-	public int assentosDisponiveis() {
-		
-		return 0;
-	}
-	public int assentoPrimeiraClasse() {
-		
-		return 0;
-	}
-	public int assentoClasseNormal() {
-		
-		return 0;
-	}
-	public void exibirAssentos() {
-		
-	}
-	public boolean valorTotal() {
-		
-		return true;
-	}
-	public int retornaColuna(String entrada){
-		int coluna = entrada.charAt(0);
-		return coluna;
-	}
-	public int retornaFileira(String entrada){
-		int fileira = Integer.parseInt(entrada.substring(1));
-		return 0;
-	}
-	public String tratarEntrada(){
-		Scanner leitor = new Scanner(System.in);
-		String str = leitor.nextLine();
-		str = str.replace(" ", "");
-		str = str.toUpperCase();
-		return str;
-	}
+
 
 } 
