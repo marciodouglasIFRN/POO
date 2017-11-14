@@ -49,7 +49,7 @@ public class Assento {
 		if(status){
 			status = false;
 				valor = 0;
-				System.out.println("Assento Liberado com Sucesso");
+				System.out.println("Assento Cancelado com Sucesso");
 		}else{
 			System.out.println("ATENÇÃO! O Assento Já Se Encontra Vazio");
 		}

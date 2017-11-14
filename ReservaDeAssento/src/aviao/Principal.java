@@ -11,6 +11,7 @@ public class Principal {
 				assento[i][j] = new Assento();
 			}
 		}
+<<<<<<< HEAD
 		menu(assento);
 		
 	}
@@ -31,28 +32,60 @@ public class Principal {
 					int s = 0;
 					if(s==0){
 						break;
-					}
-				}
+=======
+		
+			boolean sair = true;
+			while(true){
+				System.out.println("_____________________________________");
+				System.out.println("|     Escolha uma op��o abaixo!      |");
+				System.out.println("|Resevar Assento ----------------- 1 |");
+				System.out.println("|Cancelar Assento ---------------- 2 |");
+				System.out.println("|Remarcar Assento ---------------- 3 |");
+				System.out.println("|Relatorios ---------------------- 4 |");
+				System.out.println("|Fechar Programa ----------------- 5 |");
+				System.out.println("|____________________________________|");
 				
-				break;
-			case 2:
-				entrada = tratarEntrada();
-				assento[retornaColuna(entrada)][retornaFileira(entrada)].desmarcarAssento();
-				break;
-			case 3:
-				System.out.println("Assentos marcados "+ assentosMarcados(assento));
-				break;
-			case 4:
-				System.out.println("Total "+valorTotal(assento));
-				break;
-			case 5:
-				System.out.println("Fim de execução...");
-				sair = false;
-				break;
-			default:
-				break;
+				opcao = leitor.nextInt();
+				switch (opcao) {
+				case 1:
+					while(true){
+						System.out.println("Digite um assento");
+						entrada = tratarEntrada();
+						int coluna = retornaColuna(entrada);
+						int fileira = retornaFileira(entrada);
+						assento[coluna][fileira].marcarAssento(entrada);
+						int s = 0;
+						if(s==0){
+							break;
+						}
+>>>>>>> b18ecc1c13e106db7f7d8713afa37517fea11938
+					}
+					
+					break;
+				case 2:
+					System.out.println("Digite o Assento que Deseja Cancelar");
+					entrada = tratarEntrada();
+					assento[retornaColuna(entrada)][retornaFileira(entrada)].desmarcarAssento();
+					break;
+				case 3:
+					System.out.println("Assentos marcados "+ assentosMarcados(assento));
+					break;
+				case 4:
+					System.out.println("Total "+valorTotal(assento));
+					break;
+				case 5:
+					System.out.println("Fim de execução...");
+					sair = false;
+					break;
+				default:
+					break;
+				}
 			}
+<<<<<<< HEAD
 		}
+=======
+			
+>>>>>>> b18ecc1c13e106db7f7d8713afa37517fea11938
 	}
 	public static int retornaColuna(String entrada){
 		int coluna = entrada.charAt(0)-65;
@@ -70,6 +103,8 @@ public class Principal {
 		return str;
 	}
 	public void remarcarAssento(int coluna, int fileira) {
+		
+		
 		
 
 	}
@@ -102,7 +137,9 @@ public class Principal {
 		return 0;
 	}
 	public void exibirAssentos() {
+
 		
+				
 	}
 	public static double valorTotal(Assento[][] assento) {
 		double total=0;
