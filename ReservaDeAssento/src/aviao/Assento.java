@@ -1,7 +1,5 @@
 package aviao;
 
-import java.util.Scanner;
-
 public class Assento {
 	private double valor;
 	private boolean status;

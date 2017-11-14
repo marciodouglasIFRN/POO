@@ -5,16 +5,20 @@ import java.util.Scanner;
 public class Principal {
 	
 	public static void main(String[] args){
-		int opcao;
-		Scanner leitor = new Scanner(System.in);
-		String entrada;
 		Assento[][] assento = new Assento[6][30];
 		for(int i =0; i<6;i++){
 			for (int j = 0; j < assento[i].length; j++) {
 				assento[i][j] = new Assento();
 			}
 		}
+		menu(assento);
+		
+	}
+	public static void menu(Assento[][] assento){
 		boolean sair = true;
+		int opcao;
+		Scanner leitor = new Scanner(System.in);
+		String entrada;
 		while(true){
 			opcao = leitor.nextInt();
 			switch (opcao) {
@@ -49,7 +53,6 @@ public class Principal {
 				break;
 			}
 		}
-		
 	}
 	public static int retornaColuna(String entrada){
 		int coluna = entrada.charAt(0)-65;
