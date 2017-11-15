@@ -39,7 +39,6 @@ public class Principal {
 					entrada = tratarEntrada();
 					int coluna = retornaColuna(entrada);
 					int fileira = retornaFileira(entrada);
-					
 					assento[fileira][coluna].marcarAssento(entrada);
 					int s = 0;
 					if(s==0){
