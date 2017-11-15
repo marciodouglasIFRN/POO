@@ -59,7 +59,7 @@ public class Principal {
 				entrada = tratarEntrada();
 				int coluna = retornaColuna(entrada);
 				int fileira = retornaFileira(entrada);
-				assento[coluna][fileira].remarcarAssento();
+				assento[fileira][coluna].remarcarAssento();
 				break;
 			case 4:
 				relatorio(assento);
@@ -93,13 +93,13 @@ public class Principal {
 			System.out.println("Assentos marcados "+ assentosMarcados(assento));
 			break;
 		case 2:
-			System.out.println("Assentos Disponiveis "+ assentosDisponiveis());
+			System.out.println("Assentos Disponiveis "+ assentosDisponiveis(assento));
 			break;
 		case 3:
-			System.out.println("Revervados Primeira Classe "+ assentoPrimeiraClasse());
+			System.out.println("Revervados Primeira Classe "+ assentoPrimeiraClasse(assento));
 			break;
 		case 4:
-			System.out.println("Revervados Classe Normal "+ assentoClasseNormal());
+			System.out.println("Revervados Classe Normal "+ assentoClasseNormal(assento));
 			break;
 		case 5:
 			exibirAssentos(assento);
@@ -146,17 +146,41 @@ public class Principal {
 		
 		return cont;
 	}
-	public static int assentosDisponiveis() {
+	public static int assentosDisponiveis(Assento[][] assento) {
+		int cont=0;
+		for(int i = 0; i < assento.length;i++){
+			for (int j = 0; j < assento[i].length; j++) {
+				if(!assento[i][j].isStatus()){
+					cont++;
+				}
+			}
+		}
 		
-		return 0;
+		return cont;
 	}
-	public static int assentoPrimeiraClasse() {
+	public static int assentoPrimeiraClasse(Assento[][] assento) {
+		int cont=0;
+		for(int i = 0; i < assento.length;i++){
+			for (int j = 0; j < assento[i].length; j++) {
+				if(assento[i][j].getValor()==100){
+					cont++;
+				}
+			}
+		}
 		
-		return 0;
+		return cont;
 	}
-	public static int assentoClasseNormal() {
+	public static int assentoClasseNormal(Assento[][] assento) {
+		int cont=0;
+		for(int i = 0; i < assento.length;i++){
+			for (int j = 0; j < assento[i].length; j++) {
+				if(assento[i][j].getValor()==80){
+					cont++;
+				}
+			}
+		}
 		
-		return 0;
+		return cont;
 	}
 	public static void exibirAssentos(Assento[][] assento) {
 		
@@ -164,73 +188,21 @@ public class Principal {
 			for (int j = 0; j < assento[i].length; j++) {
 				if(assento[i][j].isStatus()) {
 					if(i < 9){
-					 	if (j == 0) {
-		                    System.out.print("A0" + (i+1) + " Ocupado    ");  
-		                } else if(j == 1){
-		                    System.out.print("B0" + (i+1) + " Ocupado    ");
-		                }else if(j == 2){
-		                    System.out.print("C0" + (i+1) + " Ocupado    ");
-		                }else if(j == 3){
-		                    System.out.print("D0" + (i+1) + " Ocupado    ");
-		                }else if(j == 4){
-		                    System.out.print("E0" + (i+1) + " Ocupado    ");
-		                }else{
-		                    System.out.print("F0" + (i+1) + " Ocupado    ");
-		                }
-                    
-                }else{
-                	 if (j == 0) {
-		                    System.out.print("A" + (i+1) + " Ocupado    ");  
-		                } else if(j == 1){
-		                    System.out.print("B" + (i+1) + " Ocupado    ");
-		                }else if(j == 2){
-		                    System.out.print("C" + (i+1) + " Ocupado    ");
-		                }else if(j == 3){
-		                    System.out.print("D" + (i+1) + " Ocupado    ");
-		                }else if(j == 4){
-		                    System.out.print("E" + (i+1) + " Ocupado    ");
-		                }else{
-		                    System.out.print("F" + (i+1) + " Ocupado    ");
-		                }
-                }          
+		                 System.out.printf("%c0 %d Ocupado    ",(j+65),(i+1));  
+	                }else{
+	                	 System.out.printf("%c %d Ocupado    ",(j+65),(i+1));
+	                }          
 					
-			} else {
+				} else {
 					if(i < 9){
-					 	if (j == 0) {
-		                    System.out.print("A0" + (i+1) + "            ");  
-		                } else if(j == 1){
-		                    System.out.print("B0" + (i+1) + "            ");
-		                }else if(j == 2){
-		                    System.out.print("C0" + (i+1) + "            ");
-		                }else if(j == 3){
-		                    System.out.print("D0" + (i+1) + "            ");
-		                }else if(j == 4){
-		                    System.out.print("E0" + (i+1) + "            ");
-		                }else{
-		                    System.out.print("F0" + (i+1) + "            ");
-		                }
-                    
-                }else{
-                	 if (j == 0) {
-		                    System.out.print("A" + (i+1) + "            ");  
-		                } else if(j == 1){
-		                    System.out.print("B" + (i+1) + "            ");
-		                }else if(j == 2){
-		                    System.out.print("C" + (i+1) + "            ");
-		                }else if(j == 3){
-		                    System.out.print("D" + (i+1) + "            ");
-		                }else if(j == 4){
-		                    System.out.print("E" + (i+1) + "            ");
-		                }else{
-		                    System.out.print("F" + (i+1) + "            ");
-		                }
-                }          
-					
-			}              
-         }
-            
+						System.out.printf("%c0 %d            ",(j+65),(i+1));
+	                }else{
+	                	System.out.printf("%c0 %d            ",(j+65),(i+1));
+	                }          
+						
+				}              
+	         }
             System.out.println();
-			
 		}	
 	
 				
