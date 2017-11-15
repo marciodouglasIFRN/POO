@@ -83,12 +83,6 @@ public class Principal {
 		str = str.toUpperCase();
 		return str;
 	}
-	public void remarcarAssento(int coluna, int fileira) {
-		
-		
-		
-
-	}
 	public int assentoMarcado() {
 		
 		return 0;
