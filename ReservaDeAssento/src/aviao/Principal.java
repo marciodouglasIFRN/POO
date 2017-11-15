@@ -52,9 +52,14 @@ public class Principal {
 				assento[retornaColuna(entrada)][retornaFileira(entrada)].desmarcarAssento();
 				break;
 			case 3:
-				System.out.println("Assentos marcados "+ assentosMarcados(assento));
+				System.out.println("Digite um assento");
+				entrada = tratarEntrada();
+				int coluna = retornaColuna(entrada);
+				int fileira = retornaFileira(entrada);
+				assento[coluna][fileira].remarcarAssento();
 				break;
 			case 4:
+				System.out.println("Assentos marcados: "+assentosMarcados(assento));
 				System.out.println("Total "+valorTotal(assento));
 				break;
 			case 5:
