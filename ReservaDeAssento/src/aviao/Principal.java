@@ -191,16 +191,16 @@ public class Principal {
 			for (int j = 0; j < assento[i].length; j++) {
 				if(assento[i][j].isStatus()) {
 					if(i < 9){
-		                 System.out.printf("%c0 %d Ocupado    ",(j+65),(i+1));  
+		                 System.out.printf("%c0%d Ocupado    ",(j+65),(i+1));  
 	                }else{
-	                	 System.out.printf("%c %d Ocupado    ",(j+65),(i+1));
+	                	 System.out.printf("%c%d Ocupado    ",(j+65),(i+1));
 	                }          
 					
 				} else {
 					if(i < 9){
-						System.out.printf("%c0 %d            ",(j+65),(i+1));
+						System.out.printf("%c0%d            ",(j+65),(i+1));
 	                }else{
-	                	System.out.printf("%c0 %d            ",(j+65),(i+1));
+	                	System.out.printf("%c%d            ",(j+65),(i+1));
 	                }          
 						
 				}              
