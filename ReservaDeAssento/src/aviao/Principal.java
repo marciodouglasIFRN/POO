@@ -5,17 +5,18 @@ import java.util.Scanner;
 public class Principal {
 	
 	public static void main(String[] args){
+		
+		menu();
+		
+	}
+	
+	public static void menu(){
 		Assento[][] assento = new Assento[30][6];
 		for(int i =0; i<assento.length;i++){
 			for (int j = 0; j < assento[i].length; j++) {
 				assento[i][j] = new Assento();
 			}
 		}
-		menu(assento);
-		
-	}
-	
-	public static void menu(Assento[][] assento){
 		boolean sair = true;
 		int opcao;
 		Scanner leitor = new Scanner(System.in);
@@ -76,44 +77,46 @@ public class Principal {
 	}
 	public static void relatorio(Assento[][] assento){
 		int opcao;
-		Scanner leitor = new Scanner(System.in);
-		System.out.println("_____________________________________");
-		System.out.println("|     Escolha uma opção abaixo!      |");
-		System.out.println("|Total de Assentos Ocupados ------ 1 |");
-		System.out.println("|Total de Assentos Vazios -------- 2 |");
-		System.out.println("|Reservas da Primeira Classe ----- 3 |");
-		System.out.println("|Reservas da Classe Normal ------- 4 |");
-		System.out.println("|Mostrar Tabela  ----------------- 5 |");
-		System.out.println("|Somatório ----------------------- 6 |");
-		System.out.println("|Sair do Menu -------------------- 7 |");
-		System.out.println("|____________________________________|");
-		opcao = leitor.nextInt();
-		switch (opcao) {
-		case 1:
-			System.out.println("Assentos marcados "+ assentosMarcados(assento));
-			break;
-		case 2:
-			System.out.println("Assentos Disponiveis "+ assentosDisponiveis(assento));
-			break;
-		case 3:
-			System.out.println("Revervados Primeira Classe "+ assentoPrimeiraClasse(assento));
-			break;
-		case 4:
-			System.out.println("Revervados Classe Normal "+ assentoClasseNormal(assento));
-			break;
-		case 5:
-			exibirAssentos(assento);
-			break;
-		case 6:
-			System.out.println("Total "+valorTotal(assento));
-			break;
-		case 7:
-			
-			break;
-			
-		default:
-			break;
+		boolean sair=true;
+		while(sair){
+			Scanner leitor = new Scanner(System.in);
+			System.out.println("_____________________________________");
+			System.out.println("|     Escolha uma opção abaixo!      |");
+			System.out.println("|Total de Assentos Ocupados ------ 1 |");
+			System.out.println("|Total de Assentos Vazios -------- 2 |");
+			System.out.println("|Reservas da Primeira Classe ----- 3 |");
+			System.out.println("|Reservas da Classe Normal ------- 4 |");
+			System.out.println("|Mostrar Tabela  ----------------- 5 |");
+			System.out.println("|Somatório ----------------------- 6 |");
+			System.out.println("|Sair do Menu -------------------- 7 |");
+			System.out.println("|____________________________________|");
+			opcao = leitor.nextInt();
+			switch (opcao) {
+			case 1:
+				System.out.println("Assentos marcados "+ assentosMarcados(assento));
+				break;
+			case 2:
+				System.out.println("Assentos Disponiveis "+ assentosDisponiveis(assento));
+				break;
+			case 3:
+				System.out.println("Revervados Primeira Classe "+ assentoPrimeiraClasse(assento));
+				break;
+			case 4:
+				System.out.println("Revervados Classe Normal "+ assentoClasseNormal(assento));
+				break;
+			case 5:
+				exibirAssentos(assento);
+				break;
+			case 6:
+				System.out.println("Total "+valorTotal(assento));
+				break;
+			case 7:
+				sair = false;
+				break;
+				
+			}
 		}
+		
 	}
 	public static int retornaColuna(String entrada){
 		int coluna = entrada.charAt(0)-65;
