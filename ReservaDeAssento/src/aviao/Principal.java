@@ -5,24 +5,25 @@ import java.util.Scanner;
 public class Principal {
 	
 	public static void main(String[] args){
+		
+		menu();
+		
+	}
+	
+	public static void menu(){
 		Assento[][] assento = new Assento[30][6];
 		for(int i =0; i<assento.length;i++){
 			for (int j = 0; j < assento[i].length; j++) {
 				assento[i][j] = new Assento();
 			}
 		}
-		menu(assento);
-		
-	}
-	
-	public static void menu(Assento[][] assento){
 		boolean sair = true;
 		int opcao;
 		Scanner leitor = new Scanner(System.in);
 		String entrada;
 		while(sair){
 			System.out.println("_____________________________________");
-			System.out.println("|     Escolha uma op��o abaixo!  |");
+			System.out.println("|     Escolha uma opção abaixo!      |");
 			System.out.println("|Resevar Assento ----------------- 1 |");
 			System.out.println("|Cancelar Assento ---------------- 2 |");
 			System.out.println("|Remarcar Assento ---------------- 3 |");
@@ -53,48 +54,15 @@ public class Principal {
 				assento[retornaColuna(entrada)][retornaFileira(entrada)].desmarcarAssento();
 				break;
 			case 3:
-				
-				
+
+				System.out.println("Digite um assento");
+				entrada = tratarEntrada();
+				int coluna = retornaColuna(entrada);
+				int fileira = retornaFileira(entrada);
+				assento[fileira][coluna].remarcarAssento();
 				break;
 			case 4:
-						System.out.println("_____________________________________");
-						System.out.println("|     Escolha uma op��o abaixo!  |");
-						System.out.println("|Total de Assentos Ocupados ------ 1 |");
-						System.out.println("|Total de Assentos Vazios -------- 2 |");
-						System.out.println("|Reservas da Primeira Classe ----- 3 |");
-						System.out.println("|Reservas da Classe Normal ------- 4 |");
-						System.out.println("|Mastrar Tabela  ----------------- 5 |");
-						System.out.println("|Somat�rio ----------------------- 6 |");
-						System.out.println("|Sair do Menu -------------------- 7 |");
-						System.out.println("|____________________________________|");
-						opcao = leitor.nextInt();
-						switch (opcao) {
-						case 1:
-							System.out.println("Assentos marcados "+ assentosMarcados(assento));
-							break;
-						case 2:
-							System.out.println("Assentos Disponiveis "+ assentosDisponiveis());
-							break;
-						case 3:
-							System.out.println("Revervados Primeira Classe "+ assentoPrimeiraClasse());
-							break;
-						case 4:
-							System.out.println("Revervados Classe Normal "+ assentoClasseNormal());
-							break;
-						case 5:
-							exibirAssentos(assento);
-							break;
-						case 6:
-							System.out.println("Total "+valorTotal(assento));
-							break;
-						case 7:
-							
-							break;
-							
-						default:
-							break;
-						}
-						
+				relatorio(assento);
 				break;
 			case 5:
 				System.out.println("Fim de execução...");
@@ -106,7 +74,49 @@ public class Principal {
 		}
 
 	}
-
+	public static void relatorio(Assento[][] assento){
+		int opcao;
+		boolean sair=true;
+		while(sair){
+			Scanner leitor = new Scanner(System.in);
+			System.out.println("_____________________________________");
+			System.out.println("|     Escolha uma opção abaixo!      |");
+			System.out.println("|Total de Assentos Ocupados ------ 1 |");
+			System.out.println("|Total de Assentos Vazios -------- 2 |");
+			System.out.println("|Reservas da Primeira Classe ----- 3 |");
+			System.out.println("|Reservas da Classe Normal ------- 4 |");
+			System.out.println("|Mostrar Tabela  ----------------- 5 |");
+			System.out.println("|Somatório ----------------------- 6 |");
+			System.out.println("|Sair do Menu -------------------- 7 |");
+			System.out.println("|____________________________________|");
+			opcao = leitor.nextInt();
+			switch (opcao) {
+			case 1:
+				System.out.println("Assentos marcados "+ assentosMarcados(assento));
+				break;
+			case 2:
+				System.out.println("Assentos Disponiveis "+ assentosDisponiveis(assento));
+				break;
+			case 3:
+				System.out.println("Revervados Primeira Classe "+ assentoPrimeiraClasse(assento));
+				break;
+			case 4:
+				System.out.println("Revervados Classe Normal "+ assentoClasseNormal(assento));
+				break;
+			case 5:
+				exibirAssentos(assento);
+				break;
+			case 6:
+				System.out.println("Total "+valorTotal(assento));
+				break;
+			case 7:
+				sair = false;
+				break;
+				
+			}
+		}
+		
+	}
 	public static int retornaColuna(String entrada){
 		int coluna = entrada.charAt(0)-65;
 		return coluna;
@@ -138,17 +148,41 @@ public class Principal {
 		
 		return cont;
 	}
-	public static int assentosDisponiveis() {
+	public static int assentosDisponiveis(Assento[][] assento) {
+		int cont=0;
+		for(int i = 0; i < assento.length;i++){
+			for (int j = 0; j < assento[i].length; j++) {
+				if(!assento[i][j].isStatus()){
+					cont++;
+				}
+			}
+		}
 		
-		return 0;
+		return cont;
 	}
-	public static int assentoPrimeiraClasse() {
+	public static int assentoPrimeiraClasse(Assento[][] assento) {
+		int cont=0;
+		for(int i = 0; i < assento.length;i++){
+			for (int j = 0; j < assento[i].length; j++) {
+				if(assento[i][j].getValor()==100){
+					cont++;
+				}
+			}
+		}
 		
-		return 0;
+		return cont;
 	}
-	public static int assentoClasseNormal() {
+	public static int assentoClasseNormal(Assento[][] assento) {
+		int cont=0;
+		for(int i = 0; i < assento.length;i++){
+			for (int j = 0; j < assento[i].length; j++) {
+				if(assento[i][j].getValor()==80){
+					cont++;
+				}
+			}
+		}
 		
-		return 0;
+		return cont;
 	}
 	public static void exibirAssentos(Assento[][] assento) {
 		
@@ -156,73 +190,21 @@ public class Principal {
 			for (int j = 0; j < assento[i].length; j++) {
 				if(assento[i][j].isStatus()) {
 					if(i < 9){
-					 	if (j == 0) {
-		                    System.out.print("A0" + (i+1) + " Ocupado    ");  
-		                } else if(j == 1){
-		                    System.out.print("B0" + (i+1) + " Ocupado    ");
-		                }else if(j == 2){
-		                    System.out.print("C0" + (i+1) + " Ocupado    ");
-		                }else if(j == 3){
-		                    System.out.print("D0" + (i+1) + " Ocupado    ");
-		                }else if(j == 4){
-		                    System.out.print("E0" + (i+1) + " Ocupado    ");
-		                }else{
-		                    System.out.print("F0" + (i+1) + " Ocupado    ");
-		                }
-                    
-                }else{
-                	 if (j == 0) {
-		                    System.out.print("A" + (i+1) + " Ocupado    ");  
-		                } else if(j == 1){
-		                    System.out.print("B" + (i+1) + " Ocupado    ");
-		                }else if(j == 2){
-		                    System.out.print("C" + (i+1) + " Ocupado    ");
-		                }else if(j == 3){
-		                    System.out.print("D" + (i+1) + " Ocupado    ");
-		                }else if(j == 4){
-		                    System.out.print("E" + (i+1) + " Ocupado    ");
-		                }else{
-		                    System.out.print("F" + (i+1) + " Ocupado    ");
-		                }
-                }          
+		                 System.out.printf("%c0 %d Ocupado    ",(j+65),(i+1));  
+	                }else{
+	                	 System.out.printf("%c %d Ocupado    ",(j+65),(i+1));
+	                }          
 					
-			} else {
+				} else {
 					if(i < 9){
-					 	if (j == 0) {
-		                    System.out.print("A0" + (i+1) + "            ");  
-		                } else if(j == 1){
-		                    System.out.print("B0" + (i+1) + "            ");
-		                }else if(j == 2){
-		                    System.out.print("C0" + (i+1) + "            ");
-		                }else if(j == 3){
-		                    System.out.print("D0" + (i+1) + "            ");
-		                }else if(j == 4){
-		                    System.out.print("E0" + (i+1) + "            ");
-		                }else{
-		                    System.out.print("F0" + (i+1) + "            ");
-		                }
-                    
-                }else{
-                	 if (j == 0) {
-		                    System.out.print("A" + (i+1) + "            ");  
-		                } else if(j == 1){
-		                    System.out.print("B" + (i+1) + "            ");
-		                }else if(j == 2){
-		                    System.out.print("C" + (i+1) + "            ");
-		                }else if(j == 3){
-		                    System.out.print("D" + (i+1) + "            ");
-		                }else if(j == 4){
-		                    System.out.print("E" + (i+1) + "            ");
-		                }else{
-		                    System.out.print("F" + (i+1) + "            ");
-		                }
-                }          
-					
-			}              
-         }
-            
+						System.out.printf("%c0 %d            ",(j+65),(i+1));
+	                }else{
+	                	System.out.printf("%c0 %d            ",(j+65),(i+1));
+	                }          
+						
+				}              
+	         }
             System.out.println();
-			
 		}	
 	
 				

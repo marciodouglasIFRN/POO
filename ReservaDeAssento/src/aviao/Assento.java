@@ -3,15 +3,8 @@ package aviao;
 public class Assento {
 	private double valor;
 	private boolean status;
-	private int quantidade;
 	private String posicao;
-	
-	public int getQuantidade() {
-		return quantidade;
-	}
-	public void setQuantidade(int quantidade) {
-		this.quantidade = quantidade;
-	}
+
 	public String getPosicao() {
 		return posicao;
 	}
@@ -34,7 +27,6 @@ public class Assento {
 	public void marcarAssento(String posicao) {
 		if(!status){
 			status = true;
-			this.posicao = posicao;
 			if(Principal.retornaFileira(posicao) < 3){
 				valor = 100;
 			}else{
@@ -48,11 +40,19 @@ public class Assento {
 	public void desmarcarAssento() {
 		if(status){
 			status = false;
-				valor = 0;
-				System.out.println("Assento Cancelado com Sucesso");
+			valor = 0;
 		}else{
 			System.out.println("ATENÇÃO! O Assento Já Se Encontra Vazio");
+			desmarcarAssento();
 		}
+		
+	}
+	public void remarcarAssento(){
+		desmarcarAssento();
+		System.out.println("Digite um assento");
+		String entrada = Principal.tratarEntrada();
+		marcarAssento(entrada);
+	
 		
 	}
 
