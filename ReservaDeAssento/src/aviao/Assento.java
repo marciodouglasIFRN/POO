@@ -25,9 +25,10 @@ public class Assento {
 	}
 	
 	public void marcarAssento(String posicao) {
+		Aviao aviao = new Aviao();
 		if(!status){
 			status = true;
-			if(Principal.retornaFileira(posicao) < 3){
+			if(aviao.retornaFileira(posicao) < 3){
 				valor = 100;
 			}else{
 				valor = 80;
@@ -48,9 +49,10 @@ public class Assento {
 		
 	}
 	public void remarcarAssento(){
+		Aviao aviao = new Aviao();
 		desmarcarAssento();
 		System.out.println("Digite um assento");
-		String entrada = Principal.tratarEntrada();
+		String entrada = aviao.tratarEntrada();
 		marcarAssento(entrada);
 	
 		
